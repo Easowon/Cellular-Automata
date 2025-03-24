@@ -1,26 +1,46 @@
 // current compilation code
-// gcc -Wall -o automata main.c update.c
+// gcc -o automata main.c update.c display.c string_handling.c
 
 #include <stdio.h>
 #define true 1
 #define false 0
 
-/*
-Takes screen state as a parameter, then displays the state on the commandline.
-*/ 
-void display(int state[]);
-
-/*
-Takes the position of a cell and returns the next iteration.
-NOTE: DO NOT UPDATE IN PLACE, STORE IN AN INTERMEDIATE VARIABLE
-*/
+void display(int *state[]);
 int update_cell(int x, int y);
-
-/*
-Takes the current state of the game and updates it to the next iteration  
-*/
 int update();
+int str_length(char *str);
+int get_flag_value(char *str, unsigned n);
+
 
 int main(int argc, char *argv[]) {
+    // flags
+    size_t iterations;
+    size_t step;
+    size_t lower;
+    size_t upper;
+    int wrap = false;
 
+    printf("number of args: %d\n", argc);
+
+    for (int i = 0; i < argc; i++) {
+        printf("argv[%d] = %s\n", i, argv[i]);
+
+        if (argv[i][0] == '-') { // if the argument is a flag
+            size_t arg_len = str_length(argv[i]);
+            switch (argv[i][1]) {
+                case 'w':
+                    wrap = true;
+                    printf("wrap set to true\n");
+                    break;
+                case 't':
+                    iterations = get_flag_value(argv[i], str_length(argv[i]) - 3);
+                    printf("total set to %d\n", iterations);
+                    break;
+            }  
+        }
+    }
+    
+    
+
+    return 0;
 }

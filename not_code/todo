@@ -1,7 +1,10 @@
+reminders:
+
 remember to add header stuff
-save to git ffs
+save to git
 
 program stuff:
 
-For now, get display working so that i can actually test stuff
-
+    For now, get basic input output working
+    main:
+        split the input board into an array of strings (1/0)

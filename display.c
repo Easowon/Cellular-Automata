@@ -5,4 +5,6 @@
 /*
 Takes screen state as a parameter, then displays the state on the commandline.
 */ 
-void display(int state[]);
+void display(int state[]) {
+    
+}
