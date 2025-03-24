@@ -1,5 +1,5 @@
 // current compilation code
-// gcc -o automata main.c update.c display.c string_handling.c
+// gcc -o automata main.c update.c display.c string_handling.c input_handling.c
 
 #include <stdio.h>
 #define true 1
@@ -8,9 +8,7 @@
 void display(int *state[]);
 int update_cell(int x, int y);
 int update();
-int str_length(char *str);
-int get_flag_value(char *str, unsigned n);
-
+unsigned args_parser(char *argument);
 
 int main(int argc, char *argv[]) {
     // flags
@@ -24,24 +22,26 @@ int main(int argc, char *argv[]) {
 
     for (int i = 0; i < argc; i++) {
         printf("argv[%d] = %s\n", i, argv[i]);
-
-        if (argv[i][0] == '-') { // if the argument is a short flag
-            unsigned arg_len = str_length(argv[i]);
-            switch (argv[i][1]) {
-                case 'w':
-                    wrap = true;
-                    printf("wrap set to true\n");
-                    break;
-                case 't':
-                    iterations = get_flag_value(argv[i], str_length(argv[i]) - 3);
-                    printf("total set to %d\n", iterations);
-                    break;
-                case 's':
-                    step = get_flag_value(argv[i], str_length(argv[i]) - 3);
-                    printf("step set to %d\n", step);
-                    break;
-            }
+        switch (argv[i][1]) {
+            case 'w':
+                wrap = args_parser(argv[i]);
+                break;
+            case 't':
+                iterations = args_parser(argv[i]);
+                break;
+            case 's':
+                step = args_parser(argv[i]);
+                break;
+            case 'l':
+                lower = args_parser(argv[i]);
+                break;
+            case 'u':
+                upper = args_parser(argv[i]);
+                break;
         }
+        
+
+
     }
 
     return 0;

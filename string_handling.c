@@ -17,7 +17,7 @@ unsigned str_length(char *str) {
 /*
 get the value for the flag
 */
-int get_flag_value(char *str, unsigned n) {
+unsigned get_flag_value(char *str, unsigned n) {
     unsigned str_l = str_length(str);
     //printf("len = %u\n", str_l);
     char new_str[n+1];
