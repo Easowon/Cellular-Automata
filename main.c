@@ -36,11 +36,13 @@ int main(int argc, char *argv[]) {
                     iterations = get_flag_value(argv[i], str_length(argv[i]) - 3);
                     printf("total set to %d\n", iterations);
                     break;
-            }  
+                case 's':
+                    step = get_flag_value(argv[i], str_length(argv[i]) - 3);
+                    printf("step set to %d\n", iterations);
+                    break;
+            }
         }
     }
-    
-    
 
     return 0;
 }
