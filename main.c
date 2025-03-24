@@ -14,10 +14,10 @@ int get_flag_value(char *str, unsigned n);
 
 int main(int argc, char *argv[]) {
     // flags
-    size_t iterations;
-    size_t step;
-    size_t lower;
-    size_t upper;
+    unsigned iterations;
+    unsigned step;
+    unsigned lower;
+    unsigned upper;
     int wrap = false;
 
     printf("number of args: %d\n", argc);
@@ -25,8 +25,8 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < argc; i++) {
         printf("argv[%d] = %s\n", i, argv[i]);
 
-        if (argv[i][0] == '-') { // if the argument is a flag
-            size_t arg_len = str_length(argv[i]);
+        if (argv[i][0] == '-') { // if the argument is a short flag
+            unsigned arg_len = str_length(argv[i]);
             switch (argv[i][1]) {
                 case 'w':
                     wrap = true;
@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
                     break;
                 case 's':
                     step = get_flag_value(argv[i], str_length(argv[i]) - 3);
-                    printf("step set to %d\n", iterations);
+                    printf("step set to %d\n", step);
                     break;
             }
         }

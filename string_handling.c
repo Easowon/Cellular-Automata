@@ -19,12 +19,14 @@ get the value for the flag
 */
 int get_flag_value(char *str, unsigned n) {
     unsigned str_l = str_length(str);
-    printf("len = %u\n", str_l);
-    char new_str[n];
+    //printf("len = %u\n", str_l);
+    char new_str[n+1];
 
     for (unsigned i = str_l-n; i < str_l; i++) {
         new_str[i - (str_l - n)] = str[i];
     }
 
+    //printf("atoi(new_str) = %d\n", atoi(new_str));
+    //printf("new_str = %s\n", new_str);
     return atoi(new_str);
 }
