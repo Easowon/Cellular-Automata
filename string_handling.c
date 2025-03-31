@@ -4,6 +4,19 @@
 #define false 0
 
 /*
+compares two strings and checks if they are equivalent up to character l
+*/
+int cmp_string(char *str, char *cmp, int length) {
+    for (int i = 0; i < length; i++) {
+        if (str[i] != cmp[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+/*
 returns length of string
 */
 unsigned str_length(char *str) {
@@ -17,12 +30,12 @@ unsigned str_length(char *str) {
 /*
 get the value for the flag
 */
-unsigned get_flag_value(char *str, unsigned n) {
+int get_flag_value(char *str, unsigned n) {
     unsigned str_l = str_length(str);
     //printf("len = %u\n", str_l);
-    char new_str[n+1];
+    char new_str[n];
 
-    for (unsigned i = str_l-n; i < str_l; i++) {
+    for (int i = str_l-n; i < str_l; i++) {
         new_str[i - (str_l - n)] = str[i];
     }
 
