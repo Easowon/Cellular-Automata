@@ -1,10 +1,11 @@
 // current compilation code
-// gcc -o automata main.c update.c display.c string_handling.c input_handling.c
+// gcc -o automata main.c
 
 #include <stdio.h>
 #include "string_handling.c"
 #include "input_handling.c"
-#include "error_handling.c"
+#include "display.c"
+#define DEBUG
 #define true 1
 #define false 0
 
@@ -15,9 +16,10 @@ int main(int argc, char *argv[]) {
     unsigned lower;
     unsigned upper;
     int wrap = false;
+    int width = 11;
+    int height;
 
-    //int foo[] = {1,0,1,0,1,0,1,0,1};
-    //display(foo, 3);
+    char board[10][10] = {{'\0'}};
 
     printf("number of args: %d\n", argc);
 
@@ -40,6 +42,26 @@ int main(int argc, char *argv[]) {
         else if (cmp_string(arg, "--upper=", 8) || cmp_string(arg, "-u=", 3)) {
             upper = args_parser(arg);
         }
+        else if (cmp_string(arg,"0",1) || cmp_string(arg,"1",1)) {
+            int x = 0;
+            int y = 0;
+            while (arg[x] != '\0') {
+                if (arg[x] == '/') {
+                    if (width == 11) {width = x;}
+                    printf("width %d\n", width);
+                    y++;
+                }
+                else {
+                    printf("at (%d,%d), %c\n", x % width, y, arg[x]);
+                    board[y][(x-y) % width] = arg[x];
+                }
+                x++;
+            }
+            height = y+1;
+            printf("%dx%d board\n", height,width);
+            display(board, width, height);
+        }
+
     }
     return 0;
 }

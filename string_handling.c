@@ -15,7 +15,6 @@ int cmp_string(char *str, char *cmp, int length) {
     return true;
 }
 
-
 /*
 returns length of string
 */
@@ -28,7 +27,7 @@ unsigned str_length(char *str) {
 }
 
 /*
-get the value for the flag
+extract the value from the argument
 */
 int get_flag_value(char *str, unsigned n) {
     unsigned str_l = str_length(str);
