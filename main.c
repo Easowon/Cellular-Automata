@@ -5,7 +5,7 @@
 #include "string_handling.c"
 #include "input_handling.c"
 #include "display.c"
-#define DEBUG
+#include "update.c"
 #define true 1
 #define false 0
 
@@ -20,6 +20,9 @@ int main(int argc, char *argv[]) {
     int height;
 
     char board[10][10] = {{'\0'}};
+
+    // input
+
 
     printf("number of args: %d\n", argc);
 
@@ -48,20 +51,28 @@ int main(int argc, char *argv[]) {
             while (arg[x] != '\0') {
                 if (arg[x] == '/') {
                     if (width == 11) {width = x;}
-                    printf("width %d\n", width);
+                    //printf("width %d\n", width);
                     y++;
                 }
                 else {
-                    printf("at (%d,%d), %c\n", x % width, y, arg[x]);
+                    //printf("at (%d,%d), %c\n", x % width, y, arg[x]);
                     board[y][(x-y) % width] = arg[x];
                 }
                 x++;
             }
             height = y+1;
-            printf("%dx%d board\n", height,width);
+            //printf("%dx%d board\n", height,width);
+        }
+    }
+    display(board, width, height);
+
+    // simulation
+
+    for (int i = 0; i < total; i++) {
+        update(board, width, height, wrap, upper, lower);
+        if (i % step == 0) {
             display(board, width, height);
         }
-
     }
     return 0;
 }

@@ -1,10 +1,8 @@
 reminders:
 
-remember to add header stuff
+remember to add header stuff (my sid etc).
 save to git
 
-program stuff:
-
-    For now, get basic input output working
-    main:
-        split the input board into an array of strings (1/0)
+todo:
+get update working
+get displaying working
