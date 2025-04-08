@@ -11,13 +11,31 @@ char update_cell(char state[10][10], int x, int y, int width, int height, int wr
     for (int dy = -1; dy <= 1; dy++) {
         for (int dx = -1; dx <= 1; dx++) {
             if (dy + dx == 0) {continue;}
-            printf("(%d, %d) is %c\n", y+dy, x+dx, state[(x+dx) % width][(y+dy) % height]);
-            if (state[(y+dy) % height][(x+dx) % width] == '1') {
+            //printf("(%d, %d) is %c\n", y+dy, x+dx, state[(x+dx) % width][(y+dy) % height]);
+            /*
+            01010101
+            01010101
+            01010101
+            01010101
+            01010101
+             ###
+            #001#
+            #000#
+            #111#
+             ###
+            */
+            if (state[(y+dy+height) % height][(x+dx+width) % width] == '1') {
+                printf(" - (%d,%d) is alive\n", x+dx, y+dy);
+                if (!wrap && ((y + dy < 0 || y + dy >= height) || (x + dx < 0 || x + dx >= width))) {
+                    printf(" -- out of bounds(%d,%d)? %d, %d\n", x+dx, y+dy, (x + dx < 0 || x + dx >= width), (y + dy < 0 || y + dy >= height));
+                    continue;
+                }
                 alive++;
             }
         }
     }
-    if (alive <= upper || alive >= lower) {
+    printf("alive around (%d,%d) = %d\n", x, y, alive);
+    if (alive <= upper && alive >= lower) {
         return '1';
     }
     return '0';

@@ -64,6 +64,7 @@ int main(int argc, char *argv[]) {
             //printf("%dx%d board\n", height,width);
         }
     }
+    printf("wrap=%d, upper=%d, lower=%d\n", wrap, upper, lower);
     display(board, width, height);
 
     // simulation
@@ -72,6 +73,7 @@ int main(int argc, char *argv[]) {
         update(board, width, height, wrap, upper, lower);
         if (i % step == 0) {
             display(board, width, height);
+            printf("\n");
         }
     }
     return 0;
