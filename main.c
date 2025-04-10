@@ -1,9 +1,11 @@
 #include <stdio.h>
-#include "string_handling.c"
-#include "display.c"
-#include "update.c"
 #define true 1
 #define false 0
+
+int cmp_string(char *str, char *cmp, int l);
+int get_flag_value(char *str);
+void display(char state[10][10], int width, int height);
+void update(char state[10][10], int width, int height, int wrap, int upper, int lower);
 
 int main(int argc, char *argv[]) {
 
@@ -72,7 +74,7 @@ int main(int argc, char *argv[]) {
     // Error handling
 
     if (total < 0) {
-        printf("Must provide a non-negative integer for total.");
+        printf("Must provide a non-negative integer for total.\n");
         return 0;
     }
     if (step <= 0) {
