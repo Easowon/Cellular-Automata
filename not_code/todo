@@ -4,5 +4,5 @@ remember to add header stuff (my sid etc).
 save to git
 
 todo:
-get update working
-get displaying working
+error handling
+makefile

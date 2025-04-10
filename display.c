@@ -3,7 +3,7 @@
 #define false 0
 
 /*
-Takes screen state as a parameter, then displays the state on the commandline.
+Takes board state as a parameter, then displays the state on the commandline.
 */ 
 void display(char state[10][10], int width, int height) {
     for (int y = 0; y < height; y++) {
