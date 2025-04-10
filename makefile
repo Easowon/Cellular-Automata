@@ -1,2 +1,5 @@
+all: automata
+
 automata: main.c
-	gcc -Wall -o automata main.c update.c display.c string_handling.c 
+    gcc -o automata main.c string_handling.c display.c update.c
+

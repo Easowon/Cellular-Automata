@@ -1,6 +1,4 @@
 #include <stdio.h>
-#define true 1
-#define false 0
 
 /*
 Takes board state as a parameter, then displays the state on the commandline.

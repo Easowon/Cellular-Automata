@@ -1,6 +1,3 @@
-// current compilation code
-// gcc -o automata main.c
-
 #include <stdio.h>
 #include "string_handling.c"
 #include "display.c"
@@ -46,7 +43,6 @@ int main(int argc, char *argv[]) {
             int x = 0;
             int y = 0;
             while (true) {
-                printf("len_row: %d, width: %d\n", len_row, width);
                 if (arg[x] == '\0') {
                     if (len_row != width) {
                         printf("Board must be a rectangle.\n");
