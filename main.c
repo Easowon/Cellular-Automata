@@ -42,15 +42,30 @@ int main(int argc, char *argv[]) {
             upper = get_flag_value(arg);
         }
         else if (cmp_string(arg,"0",1) || cmp_string(arg,"1",1)) {
+            int len_row = 0;
             int x = 0;
             int y = 0;
-            while (arg[x] != '\0') {
+            while (true) {
+                printf("len_row: %d, width: %d\n", len_row, width);
+                if (arg[x] == '\0') {
+                    if (len_row != width) {
+                        printf("Board must be a rectangle.\n");
+                        return 0;
+                    }
+                    break;
+                }
                 if (arg[x] == '/') {
                     if (width == 11) {width = x;}
+                    if (len_row != width) {
+                        printf("Board must be a rectangle.\n");
+                        return 0;
+                    }
+                    len_row = 0;
                     y++;
                 }
                 else {
                     board[y][(x-y) % width] = arg[x];
+                    len_row++;
                 }
                 x++;
             }
