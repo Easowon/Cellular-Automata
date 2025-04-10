@@ -10,7 +10,7 @@
 
 int main(int argc, char *argv[]) {
 
-    // flags
+    // Flags
     int total = -1;
     int step = -1;
     int lower = -1;
@@ -21,7 +21,7 @@ int main(int argc, char *argv[]) {
 
     char board[10][10] = {{'\0'}};
 
-    // input
+    // Input
 
     for (int i = 0; i < argc; i++) {
         char *arg = argv[i];
@@ -58,6 +58,8 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    // Error handling
+
     if (total < 0) {
         printf("Must provide a non-negative integer for total.");
         return 0;
@@ -79,9 +81,11 @@ int main(int argc, char *argv[]) {
         return 0;
     }
 
+    // Display initial board state
+
     display(board, width, height);
 
-    // simulation
+    // Simulate board iterations
 
     for (int i = 1; i <= total; i++) {
         update(board, width, height, wrap, upper, lower);

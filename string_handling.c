@@ -1,18 +1,13 @@
-#include <stdio.h>
-#include <stdlib.h>
-#define true 1
-#define false 0
-
 /*
-compares two strings and checks if they are equivalent up to character l
+Compares two strings and checks if they are equivalent up to character l
 */
 int cmp_string(char *str, char *cmp, int length) {
     for (int i = 0; i < length; i++) {
         if (str[i] != cmp[i]) {
-            return false;
+            return 0;
         }
     }
-    return true;
+    return 1;
 }
 
 /*
