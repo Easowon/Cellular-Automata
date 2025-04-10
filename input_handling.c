@@ -24,22 +24,22 @@ int args_parser(char *argument) {
         }
         else if (argument[2] == 't') {
             unsigned val = get_flag_value(argument, str_length(argument) - 8);
-            printf("returned %d\n", val);
+            //printf("returned %d\n", val);
             return val;
         }
         else if (argument[2] == 's') {
             unsigned val = get_flag_value(argument, str_length(argument) - 7);
-            printf("returned %d\n", val);
+            //printf("returned %d\n", val);
             return val;
         }
         else if (argument[2] == 'l') {
             unsigned val = get_flag_value(argument, str_length(argument) - 8);
-            printf("returned %d\n", val);
+            //printf("returned %d\n", val);
             return val;
         }
         else if (argument[2] == 'u') {
             unsigned val = get_flag_value(argument, str_length(argument) - 8);
-            printf("returned %d\n", val);
+            //printf("returned %d\n", val);
             return val;
         }
     }

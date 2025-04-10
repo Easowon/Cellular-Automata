@@ -11,10 +11,10 @@
 
 int main(int argc, char *argv[]) {
     // flags
-    unsigned total;
-    unsigned step;
-    unsigned lower;
-    unsigned upper;
+    int total = -1;
+    int step = -1;
+    int lower = -1;
+    int upper = 9;
     int wrap = false;
     int width = 11;
     int height;
@@ -51,7 +51,6 @@ int main(int argc, char *argv[]) {
             while (arg[x] != '\0') {
                 if (arg[x] == '/') {
                     if (width == 11) {width = x;}
-                    //printf("width %d\n", width);
                     y++;
                 }
                 else {
@@ -64,16 +63,34 @@ int main(int argc, char *argv[]) {
             //printf("%dx%d board\n", height,width);
         }
     }
-    printf("wrap=%d, upper=%d, lower=%d\n", wrap, upper, lower);
+
+    if (step <= 0) {
+        printf("Must provide a positive integer for step.\n");
+        return 0;
+    }
+    if (lower < 0) {
+        printf("Must provide a non-negative integer for lower.\n");
+        return 0;
+    }
+    if (upper > 9) {
+        printf("Must provide an integer no larger than 8 for upper.\n");
+        return 0;
+    }
+    if (lower > upper) {
+        printf("lower must be no larger than upper.\n");
+        return 0;
+    }
+
+    printf("wrap=%d, upper=%d, lower=%d, step=%d, total=%d\n", wrap, upper, lower, step, total);
     display(board, width, height);
 
     // simulation
 
-    for (int i = 0; i < total; i++) {
+    for (int i = 1; i <= total; i++) {
+        printf("\n");
         update(board, width, height, wrap, upper, lower);
         if (i % step == 0) {
             display(board, width, height);
-            printf("\n");
         }
     }
     return 0;
