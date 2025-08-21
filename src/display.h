@@ -1,0 +1,1 @@
+void display(char state[10][10], int width, int height);
