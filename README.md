@@ -1,6 +1,6 @@
 # Cellular Automata
 
-A commandline simulator for Conways Game of Life with optional modifications.
+A commandline simulator for Conways Game of Life with modifications.
 
 ## Build
 
