@@ -1,6 +1,6 @@
 # Cellular Automata
 
-A commandline simulator for Conways Game of Life with modifications.
+A mini commandline simulator for Conways Game of Life with modifications.
 
 ## Build
 
@@ -16,7 +16,7 @@ make
 
 ## Arguments
 ```
-REQUIRED (any order)
+REQUIRED
 -t=TOTAL, --total=TOTAL         Specifies total number of iterations to be performed
 -s=STEP, --step=STEP            Specifies when to output board state (iteration 0 is always output)
 -l=LOWER, --lower=LOWER         Specifies the minimum number of neighbors a cell must have to be 
@@ -26,13 +26,14 @@ REQUIRED (any order)
                                 Cannot be less than LOWER.
 board                           A string which represents a valid board state, 
                                 with rows being seperated by /'s
+                                Cannot be greater than 10x10.
                                 Examples
                                 001/100/010
                                 000001/100000
                                 1/0/1/0
-    
-    OPTIONAL
-    -w, --wrap                   If present, the board will wrap around edges.
+
+OPTIONAL
+-w, --wrap                      If present, the board will wrap around edges.
 ```
 ## Example
 
